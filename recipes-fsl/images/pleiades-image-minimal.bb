@@ -24,7 +24,7 @@ ISP_PKGS = ""
 
 CORE_IMAGE_EXTRA_INSTALL += " \
     imx-uuc \
-    packagegroup-core-full-cmdline \
+    packagegroup-core-base-utils \
     packagegroup-imx-tools-audio \
     packagegroup-fsl-gstreamer1.0 \
     packagegroup-fsl-gstreamer1.0-full \
