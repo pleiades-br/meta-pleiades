@@ -11,6 +11,9 @@ do_patchextra () {
     install -d ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
     install -m 0644 ${WORKDIR}/dts/imx8mp-verdin-wifi-canopus.dts ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
     install -m 0644 ${WORKDIR}/dts/imx8mp-verdin-canopus.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
+
+    rm ${WORKDIR}/defconfig
+    install -m 0644 ${WORKDIR}/verdin-imx8mp/defconfig ${WORKDIR}
 }
 
 addtask patchextra after do_patch before do_compile
