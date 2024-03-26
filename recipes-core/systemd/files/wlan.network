@@ -3,7 +3,6 @@ Name=wlan0 uap0
 WLANInterfaceType=ap
 
 [Network]
-Address=192.168.25.1/24
 DHCPServer=true
 IPMasquerade=yes
 IPForward=ipv4
