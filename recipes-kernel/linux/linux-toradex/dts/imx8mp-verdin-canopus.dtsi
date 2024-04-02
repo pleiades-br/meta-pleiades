@@ -50,6 +50,10 @@
 			sound-dai = <&sai1>;
 		};
 	};
+
+    aliases {
+        ethernet0 = &fec;
+    };
 };
 
 &backlight {
@@ -72,7 +76,7 @@
 };
 
 &eqos {
-	status = "okay";
+	status = "disabled";
 };
 
 &fec {
@@ -219,21 +223,28 @@
 };
 
 /* Verdin USB_1 */
-&usb3_0 {
-	status = "okay";
-};
-
 &usb3_phy0 {
 	status = "okay";
 };
 
-/* Verdin USB_2 */
-&usb3_1 {
-	fsl,permanently-attached;
+&usb3_0 {
 	status = "okay";
 };
 
+&usb_dwc3_0 {
+	status = "okay";
+};
+
+/* Verdin USB_2 */
 &usb3_phy1 {
+	status = "disabled";
+};
+
+&usb3_1 {
+	status = "okay";
+};
+
+&usb_dwc3_1 {
 	status = "okay";
 };
 
@@ -242,3 +253,4 @@
 	max-frequency = <100000000>;
 	status = "okay";
 };
+
