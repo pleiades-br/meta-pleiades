@@ -52,7 +52,7 @@
 	};
 
     aliases {
-        ethernet0 = &fec;
+        ethernet0 = &fec_canopus;
     };
 };
 
@@ -80,9 +80,35 @@
 };
 
 &fec {
-	phy-supply = <&reg_eth2phy>;
-	status = "okay";
+	//phy-supply = <&reg_eth2phy>;
+	status = "disabled";
 };
+
+&fec_canopus {
+	fsl,magic-packet;
+	phy-handle = <&vsc8531_0>;
+	phy-mode = "rgmii-id";
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&pinctrl_fec>;
+	pinctrl-1 = <&pinctrl_fec_sleep>;
+
+	mdio {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+        vsc8531_0: ethernet-phy@0 {
+            compatible = "ethernet-phy-id0007.0570";
+            vsc8531,vddmac		= <3300>;
+            vsc8531,edge-slowdown	= <7>;
+            vsc8531,led-0-mode	= <VSC8531_LINK_1000_ACTIVITY>;
+            vsc8531,led-1-mode	= <VSC8531_LINK_100_ACTIVITY>;
+			interrupt-parent = <&gpio4>;
+			interrupts = <18 IRQ_TYPE_LEVEL_LOW>;
+		    //load-save-gpios		= <&gpio 10 GPIO_ACTIVE_HIGH>;
+        };
+	}; 
+    status = "okay" ;
+}
 
 &flexcan1 {
 	status = "okay";
@@ -237,7 +263,7 @@
 
 /* Verdin USB_2 */
 &usb3_phy1 {
-	status = "disabled";
+	status = "okay";
 };
 
 &usb3_1 {
