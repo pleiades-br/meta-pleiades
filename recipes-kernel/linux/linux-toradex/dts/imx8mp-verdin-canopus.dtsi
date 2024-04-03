@@ -107,8 +107,8 @@
 		    //load-save-gpios		= <&gpio 10 GPIO_ACTIVE_HIGH>;
         };
 	}; 
-    status = "okay" ;
-}
+    status = "okay";
+};
 
 &flexcan1 {
 	status = "okay";
