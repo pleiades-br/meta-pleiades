@@ -53,7 +53,7 @@
 	};
 
     aliases {
-        ethernet0 = &fec_canopus;
+        ethernet0 = &fec;
     };
 };
 
@@ -81,11 +81,6 @@
 };
 
 &fec {
-	//phy-supply = <&reg_eth2phy>;
-	status = "disabled";
-};
-
-&fec_canopus {
 	fsl,magic-packet;
 	phy-handle = <&vsc8531_0>;
 	phy-mode = "rgmii-id";
