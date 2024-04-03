@@ -2,6 +2,7 @@
 /*
  * Copyright 2022 Toradex
  */
+#include "dt-bindings/net/mscc-phy-vsc8531.h"
 
 / {
 	reg_eth2phy: regulator-eth2phy {
