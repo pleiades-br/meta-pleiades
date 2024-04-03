@@ -2,6 +2,7 @@
 /*
  * Copyright 2022 Toradex
  */
+#include "dt-bindings/net/mscc-phy-vsc8531.h"
 
 / {
 	reg_eth2phy: regulator-eth2phy {
@@ -91,6 +92,7 @@
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&pinctrl_fec>;
 	pinctrl-1 = <&pinctrl_fec_sleep>;
+    status = "okay";
 
 	mdio {
 		#address-cells = <1>;
@@ -107,7 +109,6 @@
 		    //load-save-gpios		= <&gpio 10 GPIO_ACTIVE_HIGH>;
         };
 	}; 
-    status = "okay";
 };
 
 &flexcan1 {
