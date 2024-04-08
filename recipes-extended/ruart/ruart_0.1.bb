@@ -3,7 +3,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=8e66d58e4d5ff0650d10b76e6c39c852"
 
 SRC_URI = "git://github.com/alvictal/ruart.git;protocol=https;branch=main"
-SRCREV = "bf6528b8c683e32fa0455ea9034aa2cb493770f5"
+SRCREV = "9464b426ac4ff99fefc9e31b8c56bfc886ba8ae8"
 
 inherit cargo
 
