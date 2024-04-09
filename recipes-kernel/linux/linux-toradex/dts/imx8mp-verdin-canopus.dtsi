@@ -232,6 +232,8 @@
 	rs485-rts-active-low;
 	rs485-rx-during-tx;*/
 	status = "okay";
+    cts-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
+	rts-gpios = <&gpio4 23 GPIO_ACTIVE_LOW>;
 };
 
 /* Verdin UART_2 */
