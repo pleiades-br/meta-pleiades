@@ -134,6 +134,16 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_gpio1>;
 	};
+
+    ctrl-pwr-eg91 {
+		gpio-hog;
+		/* Verdin (SODIMM 210) */
+		gpios = <5 GPIO_ACTIVE_HIGH>;
+		line-name = "CTRL_PWR_EG91";
+		output-high;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpio3>;        
+    }
 };
 
 /* Current measurement into module VCC */
@@ -247,18 +257,6 @@
 	status = "okay";
     cts-gpios = <&gpio4 24 GPIO_ACTIVE_LOW>;
 	rts-gpios = <&gpio4 23 GPIO_ACTIVE_LOW>;
-
-    eg91_pwr: gpio-reset {
-        compatible = "gpio-reset";
-	    reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
-        reset-delay-us = <500000>;
-    };
-
-    eg91_reset: gpio-reset {
-        compatible = "gpio-reset";
-	    reset-gpios = <&gpio2 1 GPIO_ACTIVE_LOW>;
-        reset-delay-us = <250000>;
-    };
 };
 
 /* Verdin UART_2 */
