@@ -143,7 +143,17 @@
 		output-high;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_gpio3>;        
-    }
+    };
+
+    ctrl-rst-eg91 {
+		gpio-hog;
+		/* Verdin (SODIMM 208) */
+		gpios = <1 GPIO_ACTIVE_HIGH>;
+		line-name = "CTRL_RST_EG91";
+		output-high;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpio2>;        
+    };
 };
 
 /* Current measurement into module VCC */
