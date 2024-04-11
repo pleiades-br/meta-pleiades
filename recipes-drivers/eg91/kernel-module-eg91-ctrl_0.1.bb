@@ -19,7 +19,7 @@ SRC_URI = "file://uart_bt.zip"
 S = "${WORKDIR}"
 
 # OE build directives
-EXTRA_OEMAKE_append_task-install = " -C ${STAGING_KERNEL_DIR} M=${S}"
+EXTRA_OEMAKE:append:task-install = " -C ${STAGING_KERNEL_DIR} M=${S}"
 EXTRA_OEMAKE += "KDIR=${STAGING_KERNEL_DIR}"
 
 # Autoinstall (optionally disable)
