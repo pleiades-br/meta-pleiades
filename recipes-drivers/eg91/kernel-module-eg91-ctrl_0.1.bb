@@ -14,7 +14,9 @@ SUMMARY = "Sample kernel module"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-SRC_URI = "file://uart_bt.zip"
+SRC_URI = "file://eg91_ctrl.c \
+        file://Makefile
+"
 
 S = "${WORKDIR}"
 
