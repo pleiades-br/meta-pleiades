@@ -15,7 +15,7 @@ LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
 SRC_URI = "file://eg91_ctrl.c \
-        file://Makefile
+        file://Makefile \
 "
 
 S = "${WORKDIR}"

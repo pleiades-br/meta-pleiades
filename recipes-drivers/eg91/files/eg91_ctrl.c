@@ -40,15 +40,16 @@ static ssize_t eg91_control_write(struct file *file, const char *buf, size_t cou
         return -EFAULT;
     
     // Simulating reset button
-    if (action == '1')
+    if (action == '1') {
         gpio_set_value(EG91_RST, 0); // Set GPIO low
         msleep(700);
         gpio_set_value(EG91_RST, 1); // Set GPIO high
 
-    else if (action == '0')
+    } else if (action == '0') {
         gpio_set_value(EG91_RST, 1); // Set GPIO high
-    else
+    } else {
         return -EINVAL;
+    }
 
     return count;
 }
@@ -143,6 +144,6 @@ static void __exit eg91_control_exit(void)
 module_init(eg91_control_init);
 module_exit(eg91_control_exit);
 
-MODULE_LICENSE("MIT");
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Aluisio Leonello Victal");
 MODULE_DESCRIPTION("A simple EG91 soc init/control module");

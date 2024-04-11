@@ -7,9 +7,9 @@ else
     KDIR := /lib/modules/$(KVER)/build
 
 all:
-    $(MAKE) -C $(KDIR) M=$(PWD) modules
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
 clean:
-    rm -rf *.o *.mod.c *.mod.o *.ko *.symvers *.order *.a
+	rm -rf *.o *.mod.c *.mod.o *.ko *.symvers *.order *.a
 
 endif
