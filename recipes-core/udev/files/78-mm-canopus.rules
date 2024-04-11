@@ -1,1 +1,4 @@
-ACTION=="add|change", SUBSYSTEM=="tty", KERNEL=="ttyS0", ENV{ID_MM_CANDIDATE}="1", ENV{ID_MM_TTY_BAUDRATE}="115200", ENV{ID_MM_TTY_FLOW_CONTROL}="none"
+ACTION!="add|change|move|bind", GOTO="mm_whitelist_end" 
+SUBSYSTEM=="tty", KERNEL=="ttyS0" 
+ENV{ID_MM_TTY_FLOW_CONTROL}="none", ENV{ID_MM_TTY_BAUDRATE}="115200", ENV{ID_MM_CANDIDATE}="1
+LABEL="mm_whitelist_end"
