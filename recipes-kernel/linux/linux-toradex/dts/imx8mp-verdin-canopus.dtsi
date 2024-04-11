@@ -124,37 +124,7 @@
 	vcc-supply = <&reg_1p8v>;
 };
 
-&gpio1 {
-	ctrl-vbat-eg91 {
-		gpio-hog;
-		/* Verdin (SODIMM 206) */
-		gpios = <0 GPIO_ACTIVE_HIGH>;
-		line-name = "CTRL_VBAT_EG91";
-		output-high;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_gpio1>;
-	};
 
-    ctrl-pwr-eg91 {
-		gpio-hog;
-		/* Verdin (SODIMM 210) */
-		gpios = <5 GPIO_ACTIVE_HIGH>;
-		line-name = "CTRL_PWR_EG91";
-		output-high;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_gpio3>;        
-    };
-
-    ctrl-rst-eg91 {
-		gpio-hog;
-		/* Verdin (SODIMM 208) */
-		gpios = <1 GPIO_ACTIVE_HIGH>;
-		line-name = "CTRL_RST_EG91";
-		output-high;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_gpio2>;        
-    };
-};
 
 /* Current measurement into module VCC */
 &hwmon {
