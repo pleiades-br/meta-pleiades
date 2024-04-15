@@ -11,7 +11,7 @@ inherit setuptools3
 
 do_install:append () {
     install -d ${D}${bindir}
-    install -m 0755 python-safetyRails.py ${D}${bindir}
+    install -m 0755 python-safetyrails.py ${D}${bindir}
 }
 
 RDEPENDS_${PN} += " \
