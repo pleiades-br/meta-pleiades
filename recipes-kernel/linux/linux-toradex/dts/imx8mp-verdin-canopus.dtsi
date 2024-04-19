@@ -17,40 +17,26 @@
 		vin-supply = <&reg_3p3v>;
 	};
 
-	sound {
-		compatible = "simple-audio-card";
-		simple-audio-card,bitclock-master = <&codec_dai>;
-		simple-audio-card,format = "i2s";
-		simple-audio-card,frame-master = <&codec_dai>;
-		simple-audio-card,mclk-fs = <256>;
-		simple-audio-card,name = "imx8mp-nau8822";
-		simple-audio-card,routing =
-			"Headphones", "LHP",
-			"Headphones", "RHP",
-			"Speaker", "LSPK",
-			"Speaker", "RSPK",
-			"Line Out", "AUXOUT1",
-			"Line Out", "AUXOUT2",
-			"LAUX", "Line In",
-			"RAUX", "Line In",
-			"LMICP", "Mic In",
-			"RMICP", "Mic In";
-		simple-audio-card,widgets =
-			"Headphones", "Headphones",
-			"Line Out", "Line Out",
-			"Speaker", "Speaker",
-			"Microphone", "Mic In",
-			"Line", "Line In";
+ 	sound_card: sound-card {
+                compatible = "simple-audio-card";
+                simple-audio-card,bitclock-master = <&dailink_master>;
+                simple-audio-card,format = "i2s";
+                simple-audio-card,frame-master = <&dailink_master>;
+                simple-audio-card,name = "max9857";
+                status = "okay";
+                dailink_master: simple-audio-card,cpu {
+                        sound-dai = <&sai1>;
+                        /*system-clock-frequency = <&sound_osc 0>;*/
+                        /*dai-tdm-slot-num = <2>;
+                        dai-tdm-slot-width = <16>;*/
+                        clocks = <&audiomix_clk IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>;
+                };
 
-		codec_dai: simple-audio-card,codec {
-			clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
-			sound-dai = <&nau8822_1a>;
-		};
+                simple-audio-card,codec{
+                        sound-dai = <&max9867>;
+                };
 
-		simple-audio-card,cpu {
-			sound-dai = <&sai1>;
-		};
-	};
+        };
 
     aliases {
         ethernet0 = &fec;
@@ -159,14 +145,14 @@
 	};
 
 	/* Audio Codec */
-	nau8822_1a: audio-codec@1a {
-		compatible = "nuvoton,nau8822";
-		reg = <0x1a>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_sai1>;
+	max9867: max9867@18 {
+		compatible = "maxim,max9867";
 		#sound-dai-cells = <0>;
+		clocks = <&audiomix_clk IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>;
+		clock-names = "mclk";
+		reg = <0x18>;
 	};
-
+    
 	/* IO Expander */
 	pca6416: gpio@20 {
 		compatible = "nxp,pca6416";
