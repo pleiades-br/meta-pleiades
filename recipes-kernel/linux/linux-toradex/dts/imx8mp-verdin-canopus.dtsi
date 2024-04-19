@@ -152,7 +152,7 @@
 		clock-names = "mclk";
 		reg = <0x18>;
 	};
-    
+
 	/* IO Expander */
 	pca6416: gpio@20 {
 		compatible = "nxp,pca6416";
