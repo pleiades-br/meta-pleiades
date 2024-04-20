@@ -29,7 +29,7 @@
                         /*system-clock-frequency = <&sound_osc 0>;*/
                         /*dai-tdm-slot-num = <2>;
                         dai-tdm-slot-width = <16>;*/
-                        clocks = <&audiomix_clk IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>;
+                        clocks = <&audiomix_clk IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
                 };
 
                 simple-audio-card,codec{
@@ -148,7 +148,7 @@
 	max9867: max9867@18 {
 		compatible = "maxim,max9867";
 		#sound-dai-cells = <0>;
-		clocks = <&audiomix_clk IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>;
+		clocks = <&audiomix_clk IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
 		clock-names = "mclk";
 		reg = <0x18>;
 	};
