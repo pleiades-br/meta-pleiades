@@ -16,3 +16,6 @@ IMAGE_INSTALL:append:plds-verdin-imx8mp-canopus = " kernel-module-eg91-ctrl"
 IMAGE_INSTALL:append:plds-verdin-imx8mp-canopus = " safetyrails"
 
 IMAGE_INSTALL:remove:plds-verdin-imx8mp-canopus = " hostapd-example"
+
+IMAGE_INSTALL:append:verdin-imx8mp = " safetyrails"
+IMAGE_INSTALL:append:verdin-imx8mp = " i2c-tools"
