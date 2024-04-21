@@ -9,10 +9,7 @@ SRC_URI:append:plds-verdin-imx8mp-canopus = " \
 
 SRC_URI:append:verdin-imx8mp = " \
             file://verdin-imx8mp/defconfig-yavia \
-            file://dts/yavia/imx8mp-verdin-dev.dtsi \
-            file://dts/yavia/imx8mp-verdin-wifi-yavia.dts \
-            file://dts/yavia/imx8mp-verdin-yavia.dtsi \
-            file://dts/yavia/imx8mp-verdin.dtsi  "
+            file://dts/yavia/imx8mp-verdin-yavia.dtsi "
 
 do_patchextra() {
     install -d ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
@@ -25,12 +22,10 @@ do_patchextra() {
         rm ${WORKDIR}/defconfig
         install -m 0644 ${WORKDIR}/verdin-imx8mp/defconfig-canopus ${WORKDIR}/defconfig
     else
-        install -m 0644 ${WORKDIR}/dts/yavia/imx8mp-verdin-dev.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
-        install -m 0644 ${WORKDIR}/dts/yavia/imx8mp-verdin-wifi-yavia.dts ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
         install -m 0644 ${WORKDIR}/dts/yavia/imx8mp-verdin-yavia.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
-        install -m 0644 ${WORKDIR}/dts/yavia/imx8mp-verdin.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
 
         rm ${WORKDIR}/defconfig
+        echo "installing defconfig..."
         install -m 0644 ${WORKDIR}/verdin-imx8mp/defconfig-yavia ${WORKDIR}/defconfig
     fi
 }
