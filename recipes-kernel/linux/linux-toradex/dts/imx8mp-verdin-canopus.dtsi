@@ -135,9 +135,6 @@
 /* Verdin I2C_1 */
 &i2c4 {
 	status = "okay";
-	#address-cells = <1>;
-	#size-cells = <0>;
-	clock-frequency = <400000>;
 
 	accerometer: mx6655@15 {
 		compatible = "memsic,mxc6655";
