@@ -73,23 +73,28 @@
 		status = "disabled";
 	};
 
+    codec_ext: max98357a@0 {
+        compatible = "maxim,max98357a";
+        #sound-dai-cells = <0>;
+    };
+
  	sound_card: sound-card {
                 compatible = "simple-audio-card";
-                simple-audio-card,bitclock-master = <&dailink_master>;
+                status = "okay";
                 simple-audio-card,format = "i2s";
                 simple-audio-card,frame-master = <&dailink_master>;
-                simple-audio-card,name = "max9857";
-                status = "okay";
+                simple-audio-card,bitclock-master = <&dailink_master>;
+                simple-audio-card,name = "max9867";
                 dailink_master: simple-audio-card,cpu {
                         sound-dai = <&sai1>;
                         /*system-clock-frequency = <&sound_osc 0>;*/
                         /*dai-tdm-slot-num = <2>;
                         dai-tdm-slot-width = <16>;*/
-                        clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>;
+                        //clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
                 };
 
                 simple-audio-card,codec{
-                        sound-dai = <&max9867>;
+                        sound-dai = <&codec_ext>;
                 };
 
         };
@@ -154,7 +159,7 @@
 	max9867: max9867@18 {
 		compatible = "maxim,max9867";
 		#sound-dai-cells = <0>;
-		clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>;
+		clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
 		clock-names = "mclk";
 		reg = <0x18>;
 	};
@@ -191,18 +196,14 @@
 
 /* VERDIN I2S_1 */
 &sai1 {
-	status = "okay";
 	#sound-dai-cells = <0>;
 	assigned-clocks = <&clk IMX8MP_CLK_SAI1>;
 	assigned-clock-parents = <&clk IMX8MP_AUDIO_PLL1_OUT>;
 	assigned-clock-rates = <24576000>;
-	clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIOMIX_SAI1_IPG>, <&clk IMX8MP_CLK_DUMMY>,
-		 <&audio_blk_ctrl IMX8MP_CLK_AUDIOMIX_SAI1_MCLK1>, <&clk IMX8MP_CLK_DUMMY>,
-		 <&clk IMX8MP_CLK_DUMMY>;
-	clock-names = "bus", "mclk0", "mclk1", "mclk2", "mclk3";
 	fsl,sai-mclk-direction-output;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_sai1>;
+    status = "okay";
 };
 
 /* Verdin UART_1 */
