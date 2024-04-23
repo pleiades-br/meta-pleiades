@@ -1,4 +1,4 @@
-state.imx8mpnau8822 {
+state.max9867 {
 	control.1 {
 		iface MIXER
 		name 'ADC Companding'

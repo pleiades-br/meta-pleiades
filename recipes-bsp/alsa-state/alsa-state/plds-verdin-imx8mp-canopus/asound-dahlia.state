@@ -1,4 +1,4 @@
-state.imx8mpwm8904 {
+state.max9867 {
 	control.1 {
 		iface MIXER
 		name 'EQ1 Volume'

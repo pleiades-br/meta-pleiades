@@ -24,6 +24,11 @@
                 simple-audio-card,frame-master = <&dailink_master>;
                 simple-audio-card,name = "max9857";
                 status = "okay";
+                simple-audio-card,widgets = "Speaker", "Speakers", 
+				                        "Line Out", "AUXOUT1",
+                        				"Line Out", "AUXOUT2";
+                simple-audio-card,routing = "Speakers", "Speaker",
+											"Line Out", "Line Out";
                 dailink_master: simple-audio-card,cpu {
                         sound-dai = <&sai1>;
                         /*system-clock-frequency = <&sound_osc 0>;*/
