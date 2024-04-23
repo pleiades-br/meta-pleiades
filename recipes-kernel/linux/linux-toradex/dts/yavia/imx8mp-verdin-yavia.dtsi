@@ -73,18 +73,14 @@
 		status = "disabled";
 	};
 
-    codec_ext: max98357a@0 {
-        compatible = "maxim,max98357a";
-        #sound-dai-cells = <0>;
-    };
 
  	sound_card: sound-card {
                 compatible = "simple-audio-card";
-                status = "okay";
                 simple-audio-card,format = "i2s";
                 simple-audio-card,frame-master = <&dailink_master>;
                 simple-audio-card,bitclock-master = <&dailink_master>;
                 simple-audio-card,name = "max9867";
+                status = "okay";
                 dailink_master: simple-audio-card,cpu {
                         sound-dai = <&sai1>;
                         /*system-clock-frequency = <&sound_osc 0>;*/
@@ -94,7 +90,7 @@
                 };
 
                 simple-audio-card,codec{
-                        sound-dai = <&codec_ext>;
+                        sound-dai = <&max9867>;
                 };
 
         };
@@ -159,8 +155,6 @@
 	max9867: max9867@18 {
 		compatible = "maxim,max9867";
 		#sound-dai-cells = <0>;
-		clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
-		clock-names = "mclk";
 		reg = <0x18>;
 	};
 };

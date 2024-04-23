@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-unset KBUILD_DEFCONFIGS
+unset KBUILD_DEFCONFIG
 
 SRC_URI:append:plds-verdin-imx8mp-canopus = " \
             file://verdin-imx8mp/defconfig-canopus \
@@ -14,18 +14,19 @@ SRC_URI:append:verdin-imx8mp = " \
 do_patchextra() {
     install -d ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
 
-    if [ "${MACHINE}" = "plds-verdin-imx8mp-canopus" ]
+    if [ "${MACHINE}" == "plds-verdin-imx8mp-canopus" ]
     then
+        echo "installing ${MACHINE} dts..."
         install -m 0644 ${WORKDIR}/dts/canopus/imx8mp-verdin-wifi-canopus.dts ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
         install -m 0644 ${WORKDIR}/dts/canopus/imx8mp-verdin-canopus.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
 
-        rm ${WORKDIR}/defconfig
+        echo "installing ${MACHINE} defconfig..."
         install -m 0644 ${WORKDIR}/verdin-imx8mp/defconfig-canopus ${WORKDIR}/defconfig
     else
+        echo "installing ${MACHINE} dts..."
         install -m 0644 ${WORKDIR}/dts/yavia/imx8mp-verdin-yavia.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
 
-        rm ${WORKDIR}/defconfig
-        echo "installing defconfig..."
+        echo "installing ${MACHINE} defconfig..."
         install -m 0644 ${WORKDIR}/verdin-imx8mp/defconfig-yavia ${WORKDIR}/defconfig
     fi
 }
