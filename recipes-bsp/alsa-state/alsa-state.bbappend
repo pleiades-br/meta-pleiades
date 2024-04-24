@@ -4,8 +4,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/alsa-state/:"
 PACKAGE_ARCH:tdx = "${MACHINE_ARCH}"
 
 SRC_URI:append:mx8m-generic-bsp:tdx = " \
-    file://asound-canopus.conf \
-    file://asound-canopus.state \
+    file://plds-verdin-imx8mp-canopus/asound-canopus.conf \
+    file://plds-verdin-imx8mp-canopus/asound-canopus.state \
 "
 
 FILES:${PN} += "${sysconfdir}/asound-*.conf"
