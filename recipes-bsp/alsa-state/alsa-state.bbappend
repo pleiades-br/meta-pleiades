@@ -4,10 +4,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/alsa-state/:"
 PACKAGE_ARCH:tdx = "${MACHINE_ARCH}"
 
 SRC_URI:append:mx8m-generic-bsp:tdx = " \
-    file://asound-dev.conf \
-    file://asound-dahlia.conf \
-    file://asound-dev.state \
-    file://asound-dahlia.state \
+    file://asound-canopus.conf \
+    file://asound-canopus.state \
 "
 
 FILES:${PN} += "${sysconfdir}/asound-*.conf"
@@ -27,14 +25,8 @@ pkg_postinst:${PN}:mx8m-generic-bsp:tdx () {
 }
 
 pkg_postinst_ontarget:${PN}:mx8m-generic-bsp:tdx () {
-    if grep -q "Development" /proc/device-tree/model; then
-        board="dev"
-    else
-        board="dahlia"
-    fi
-
-    mv /etc/asound-$board.conf /etc/asound.conf
-    mv /var/lib/alsa/asound-$board.state /var/lib/alsa/asound.state
+    mv /etc/asound-canopus.conf /etc/asound.conf
+    mv /var/lib/alsa/asound-canopus.state /var/lib/alsa/asound.state
     rm -f /etc/asound-*.conf
     rm -f /var/lib/alsa/asound-*.state
 }
