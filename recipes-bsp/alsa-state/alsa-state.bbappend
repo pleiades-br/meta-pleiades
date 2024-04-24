@@ -15,8 +15,8 @@ do_install:append:mx8m-generic-bsp:tdx () {
     # at runtime to support both dev/dahlia boards.
     rm -f ${D}${sysconfdir}/asound.conf
     rm -f ${D}${localstatedir}/lib/alsa/asound.state
-    install -m 0644 ${WORKDIR}/asound-*.conf ${D}${sysconfdir}
-    install -m 0644 ${WORKDIR}/asound-*.state ${D}${localstatedir}/lib/alsa
+    install -m 0644 ${WORKDIR}/plds-verdin-imx8mp-canopus/asound-*.conf ${D}${sysconfdir}
+    install -m 0644 ${WORKDIR}/plds-verdin-imx8mp-canopus/asound-*.state ${D}${localstatedir}/lib/alsa
 }
 
 # Invalidate the default pkg_postinst in oe-core, this ensures our ontarget
