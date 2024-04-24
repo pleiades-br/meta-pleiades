@@ -1,11 +1,11 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI += " \
+SRC_URI:append:plds-verdin-imx8mp-canopus = " \
             file://config/verdin-imx8mp-canopus_defconfig \
             file://patches/0001-uboot-variable-adjust-for-Canopus-board.patch \
             file://patches/0002-uboot-canopus-eg91-vbat.patch"
 
-do_patchextra () {
+do_patchextra:plds-verdin-imx8mp-canopus () {
     install -m 0644 ${WORKDIR}/config/verdin-imx8mp-canopus_defconfig ${S}/configs/
 }
 
