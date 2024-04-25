@@ -6,6 +6,11 @@ PACKAGE_ARCH:tdx = "${MACHINE_ARCH}"
 SRC_URI:append:mx8m-generic-bsp:tdx = " \
     file://plds-verdin-imx8mp-canopus/asound-canopus.conf \
     file://plds-verdin-imx8mp-canopus/asound-canopus.state \
+    file://plds-verdin-imx8mp-canopus/asound-dev.conf \
+    file://plds-verdin-imx8mp-canopus/asound-dev.state \
+    file://plds-verdin-imx8mp-canopus/asound-dahlia.conf \
+    file://plds-verdin-imx8mp-canopus/asound-dahlia.state \
+
 "
 
 FILES:${PN} += "${sysconfdir}/asound-*.conf"
