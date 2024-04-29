@@ -81,17 +81,17 @@
                 simple-audio-card,bitclock-master = <&dailink_master>;
                 simple-audio-card,name = "max9867";
                 status = "okay";
-                simple-audio-card,widgets = "Speaker", "Speakers", 
-				                        "Line Out", "AUXOUT1",
-                        				"Line Out", "AUXOUT2";
-                simple-audio-card,routing = "Speakers", "Speaker",
-											"Line Out", "Line Out";
+                simple-audio-card,routing =
+                    "Left Line", "LOUT",
+                    "Right Line", "ROUT";
+                simple-audio-card,widgets =
+                    "Headphones", "Headphones",
+                    "Line", "Left Line",
+                    "Line", "Right Line",
+                    "Speaker", "Speaker";
                 dailink_master: simple-audio-card,cpu {
                         sound-dai = <&sai1>;
-                        /*system-clock-frequency = <&sound_osc 0>;*/
-                        /*dai-tdm-slot-num = <2>;
-                        dai-tdm-slot-width = <16>;*/
-                        //clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
+                        clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
                 };
 
                 simple-audio-card,codec{
@@ -199,6 +199,10 @@
 	assigned-clocks = <&clk IMX8MP_CLK_SAI1>;
 	assigned-clock-parents = <&clk IMX8MP_AUDIO_PLL1_OUT>;
 	assigned-clock-rates = <24576000>;
+	clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_IPG>, <&clk IMX8MP_CLK_DUMMY>,
+		 <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>, <&clk IMX8MP_CLK_DUMMY>,
+		 <&clk IMX8MP_CLK_DUMMY>, <&clk IMX8MP_AUDIO_PLL1_OUT>, <&clk IMX8MP_AUDIO_PLL2_OUT>;
+	clock-names = "bus", "mclk0", "mclk1", "mclk2", "mclk3", "pll8k", "pll11k";
 	fsl,sai-mclk-direction-output;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_sai1>;

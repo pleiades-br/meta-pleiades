@@ -9,7 +9,8 @@ SRC_URI:append:plds-verdin-imx8mp-canopus = " \
 
 SRC_URI:append:verdin-imx8mp = " \
             file://verdin-imx8mp/defconfig-yavia \
-            file://dts/yavia/imx8mp-verdin-yavia.dtsi "
+            file://dts/yavia/imx8mp-verdin-yavia.dtsi \
+            file://patches/0001-adding-debug-max6897.patch"
 
 do_patchextra() {
     install -d ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale

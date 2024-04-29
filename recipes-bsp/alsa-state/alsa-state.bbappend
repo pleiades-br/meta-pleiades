@@ -29,8 +29,8 @@ pkg_postinst:${PN}:mx8m-generic-bsp:tdx () {
 }
 
 pkg_postinst_ontarget:${PN}:mx8m-generic-bsp:tdx () {
-    mv /etc/asound-canopus.conf /etc/asound.conf
-    mv /var/lib/alsa/asound-canopus.state /var/lib/alsa/asound.state
-    rm -f /etc/asound-*.conf
-    rm -f /var/lib/alsa/asound-*.state
+    mv /etc/asound-dahlia.conf /etc/asound.conf
+    mv /var/lib/alsa/asound-dahlia.state /var/lib/alsa/asound.state
+    #rm -f /etc/asound-*.conf
+    #rm -f /var/lib/alsa/asound-*.state
 }

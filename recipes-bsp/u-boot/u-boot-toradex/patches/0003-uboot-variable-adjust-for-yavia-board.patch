@@ -7,7 +7,7 @@ index 88299ad950..793de73303 100644
  	"boot_script_dhcp=" BOOT_SCRIPT "\0" \
  	"console=ttymxc2\0" \
 -	"fdt_board=dev\0" \
-+	"fdt_board=wifi\0" \
++	"fdt_board=yavia\0" \
  	"initrd_addr=0x43800000\0" \
  	"initrd_high=0xffffffffffffffff\0" \
  	"setup=setenv setupargs console=tty1 console=${console},${baudrate} " \
