@@ -9,7 +9,7 @@ SRC_URI[sha256sum] = "78dfff3879b4994d1f4fc6485646a57755c6ee3c19647a491f790a0895
 
 inherit pypi setuptools3
 
-# SRC_URI += "file://0001-Remove-absolute-paths-into-build-machine-system-dirs.patch"
+SRC_URI += "file://0001-Remove-absolute-paths-into-build-machine-system-dirs.patch"
 
 DEPENDS += "portaudio-v19"
 
