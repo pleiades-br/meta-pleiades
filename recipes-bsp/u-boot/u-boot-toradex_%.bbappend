@@ -10,8 +10,11 @@ SRC_URI:append:verdin-imx8mp = " \
             file://patches/0004-adding-vfat-config-to-verdin-imx8mp.patch "
             
 
-do_patchextra:plds-verdin-imx8mp-canopus () {
-    install -m 0644 ${WORKDIR}/config/verdin-imx8mp-canopus_defconfig ${S}/configs/
+do_patchextra() {
+    if [ "${MACHINE}" == "plds-verdin-imx8mp-canopus" ]
+    then
+        install -m 0644 ${WORKDIR}/config/verdin-imx8mp-canopus_defconfig ${S}/configs/
+    fi
 }
 
 addtask patchextra after do_patch before do_compile
