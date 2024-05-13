@@ -22,7 +22,7 @@ do_patchextra() {
         install -m 0644 ${WORKDIR}/dts/canopus/imx8mp-verdin-canopus.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
 
         echo "installing ${MACHINE} defconfig..."
-        install -m 0644 ${WORKDIR}/verdin-imx8mp/defconfig-canopus ${WORKDIR}/defconfig
+        cp ${WORKDIR}/verdin-imx8mp/defconfig-canopus ${WORKDIR}/defconfig
     else
         echo "installing ${MACHINE} dts..."
         install -m 0644 ${WORKDIR}/dts/yavia/imx8mp-verdin-yavia.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
