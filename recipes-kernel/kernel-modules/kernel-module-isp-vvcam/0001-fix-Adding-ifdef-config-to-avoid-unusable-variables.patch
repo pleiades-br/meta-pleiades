@@ -7,8 +7,6 @@ Subject: [PATCH] fix: Adding ifdef config to avoid unusable variables
  vvcam/isp/isp_isr.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/vvcam/isp/isp_isr.c b/vvcam/isp/isp_isr.c
-index f304ede..cf06168 100644
 --- a/vvcam/isp/isp_isr.c
 +++ b/vvcam/isp/isp_isr.c
 @@ -144,6 +144,7 @@ int update_dma_buffer(struct isp_ic_dev *dev)

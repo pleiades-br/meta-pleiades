@@ -7,7 +7,7 @@ SRC_URI:append:plds-verdin-imx8mp-canopus = " \
             file://dts/canopus/imx8mp-verdin-canopus.dtsi \
             file://dts/canopus/imx8mp-verdin-wifi-canopus.dts "
 
-SRC_URI:append:verdin-imx8mp = " \
+SRC_URI:append:verdin-imx8mp += " \
             file://verdin-imx8mp/defconfig-yavia \
             file://dts/yavia/imx8mp-verdin-yavia.dtsi \
             file://patches/0001-adding-debug-max6897.patch"
