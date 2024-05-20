@@ -258,7 +258,7 @@
 
 /* Verdin USB_2 */
 &usb3_phy1 {
-	status = "disabled";
+	status = "okay";
 };
 
 &usb3_1 {
