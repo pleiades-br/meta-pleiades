@@ -13,8 +13,8 @@
 
 	aliases {
 		/* Ethernet aliases to ensure correct MAC addresses */
-		ethernet0 = &eqos;
-		ethernet1 = &fec;
+		//ethernet0 = &eqos;
+		//ethernet1 = &fec;
 		rtc0 = &rtc_i2c;
 		rtc1 = &snvs_rtc;
 	};
@@ -339,7 +339,7 @@
 };
 
 /* Verdin ETH_2_RGMII */
-&fec {
+/*&fec {
 	fsl,magic-packet;
 	phy-handle = <&ethphy1>;
 	phy-mode = "rgmii-id";
@@ -359,7 +359,7 @@
 			reg = <7>;
 		};
 	};
-};
+};*/
 
 /* Verdin CAN_1 */
 &flexcan1 {

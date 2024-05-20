@@ -19,21 +19,21 @@
 
  	sound_card: sound-card {
                 compatible = "simple-audio-card";
-                simple-audio-card,bitclock-master = <&dailink_master>;
                 simple-audio-card,format = "i2s";
                 simple-audio-card,frame-master = <&dailink_master>;
-                simple-audio-card,name = "max9857";
+                simple-audio-card,bitclock-master = <&dailink_master>;
+                simple-audio-card,name = "max9867";
                 status = "okay";
-                simple-audio-card,widgets = "Speaker", "Speakers", 
-				                        "Line Out", "AUXOUT1",
-                        				"Line Out", "AUXOUT2";
-                simple-audio-card,routing = "Speakers", "Speaker",
-											"Line Out", "Line Out";
+                simple-audio-card,routing =
+                    "Left Line", "LOUT",
+                    "Right Line", "ROUT";
+                simple-audio-card,widgets =
+                    "Headphones", "Headphones",
+                    "Line", "Left Line",
+                    "Line", "Right Line",
+                    "Speaker", "Speaker";
                 dailink_master: simple-audio-card,cpu {
                         sound-dai = <&sai1>;
-                        /*system-clock-frequency = <&sound_osc 0>;*/
-                        /*dai-tdm-slot-num = <2>;
-                        dai-tdm-slot-width = <16>;*/
                         clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
                 };
 
@@ -98,11 +98,11 @@
 };
 
 &flexcan1 {
-	status = "okay";
+	status = "disabled";
 };
 
 &flexcan2 {
-	status = "okay";
+	status = "disabled";
 };
 
 /* Verdin QSPI_1 */
@@ -149,9 +149,8 @@
 	/* Audio Codec */
 	max9867: max9867@18 {
 		compatible = "maxim,max9867";
+        clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
 		#sound-dai-cells = <0>;
-		clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>;
-		clock-names = "mclk";
 		reg = <0x18>;
 	};
 
@@ -196,7 +195,7 @@
 
 /* Verdin PWM_2 */
 &pwm2 {
-	status = "okay";
+	status = "disabled";
 };
 
 /* Verdin PWM_3_DSI */
@@ -210,11 +209,18 @@
 
 /* Verdin I2S_1 */
 &sai1 {
+	#sound-dai-cells = <0>;
 	assigned-clocks = <&clk IMX8MP_CLK_SAI1>;
 	assigned-clock-parents = <&clk IMX8MP_AUDIO_PLL1_OUT>;
 	assigned-clock-rates = <24576000>;
+	clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_IPG>, <&clk IMX8MP_CLK_DUMMY>,
+		 <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI1_MCLK1>, <&clk IMX8MP_CLK_DUMMY>,
+		 <&clk IMX8MP_CLK_DUMMY>, <&clk IMX8MP_AUDIO_PLL1_OUT>, <&clk IMX8MP_AUDIO_PLL2_OUT>;
+	clock-names = "bus", "mclk0", "mclk1", "mclk2", "mclk3", "pll8k", "pll11k";
 	fsl,sai-mclk-direction-output;
-	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_sai1>;
+    status = "okay";
 };
 
 /* Verdin UART_1, connector X50 through RS485 transceiver */
@@ -252,10 +258,14 @@
 
 /* Verdin USB_2 */
 &usb3_phy1 {
-	status = "okay";
+	status = "disabled";
 };
 
 &usb3_1 {
+	fsl,disable-port-power-control;
+	fsl,over-current-active-low;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_gpio_hog2>;
 	status = "okay";
 };
 
