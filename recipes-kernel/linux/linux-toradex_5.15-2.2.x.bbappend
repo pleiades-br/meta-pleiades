@@ -5,6 +5,7 @@ unset KBUILD_DEFCONFIG
 SRC_URI:append:plds-verdin-imx8mp-canopus = " \
             file://defconfig \
             file://dts/canopus/imx8mp-verdin-canopus.dtsi \
+            file://dts/canopus/imx8mp-verdin-wifi-canopus.dtsi \
             file://dts/canopus/imx8mp-verdin-wifi-canopus.dts "
 
 SRC_URI:append:verdin-imx8mp = " \
@@ -20,6 +21,7 @@ do_patchextra() {
         echo "installing ${MACHINE} dts..."
         install -m 0644 ${WORKDIR}/dts/canopus/imx8mp-verdin-wifi-canopus.dts ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
         install -m 0644 ${WORKDIR}/dts/canopus/imx8mp-verdin-canopus.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
+        install -m 0644 ${WORKDIR}/dts/canopus/imx8mp-verdin-wifi-canopus.dtsi ${STAGING_KERNEL_DIR}/arch/arm64/boot/dts/freescale
 
     else
         echo "installing ${MACHINE} dts..."
