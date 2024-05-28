@@ -1,3 +1,10 @@
+/*
+ Author: ZyZy
+
+ This driver power on the EG91 for canopus board
+ 
+*/
+
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/delay.h>
@@ -41,12 +48,12 @@ static ssize_t eg91_control_write(struct file *file, const char *buf, size_t cou
     
     // Simulating reset button
     if (action == '1') {
-        gpio_set_value(EG91_RST, 0); // Set GPIO low
+        gpio_set_value(EG91_RST, 1); // Set GPIO High 
         msleep(700);
-        gpio_set_value(EG91_RST, 1); // Set GPIO high
+        gpio_set_value(EG91_RST, 0); // Set GPIO Low
 
     } else if (action == '0') {
-        gpio_set_value(EG91_RST, 1); // Set GPIO high
+        gpio_set_value(EG91_RST, 0); // Set GPIO high
     } else {
         return -EINVAL;
     }
@@ -90,7 +97,7 @@ static int __init eg91_control_init(void)
         return ret;
     }
 
-    ret = gpio_direction_output(EG91_PWR, 1);
+    ret = gpio_direction_output(EG91_PWR, 0);
     if (ret) {
         printk(KERN_ERR "Unable to set GPIO %d direction - eg91_pwr_gpio_control\n", EG91_PWR);
         gpio_free(EG91_VBAT);
@@ -105,18 +112,19 @@ static int __init eg91_control_init(void)
         return ret;
     }
 
-    ret = gpio_direction_output(EG91_RST, 1);
+    ret = gpio_direction_output(EG91_RST, 0);
     if (ret) {
         printk(KERN_ERR "Unable to set GPIO %d direction - eg91_rst_gpio_control\n", EG91_RST);
+        gpio_free(EG91_PWR);
         gpio_free(EG91_VBAT);
         return ret;
     }
     printk(KERN_INFO "EG91 GPIO eg91_rst_gpio_control configured\n");
 
     // Simulating pwr button
-    gpio_set_value(EG91_PWR, 0); // Set GPIO low
+    gpio_set_value(EG91_PWR, 1); // Set GPIO High
     msleep(550);
-    gpio_set_value(EG91_PWR, 1); // Set GPIO high
+    gpio_set_value(EG91_PWR, 0); // Set GPIO Low
 
 
     ret = register_chrdev(0, DEVICE_NAME, &eg91_gpio_control_fops);
