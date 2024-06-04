@@ -16,6 +16,7 @@ inherit core-image
 
 ## Select Image Features
 IMAGE_FEATURES += " \
+    debug-tweaks \
     splash \
     ssh-server-dropbear \
 "
@@ -28,11 +29,10 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-imx-tools-audio \
     packagegroup-fsl-gstreamer1.0 \
     packagegroup-fsl-gstreamer1.0-full \
+    python3 \
     myir-regulatory \
     bridge-utils \
-    firmware-brcm43362 \
     firmware-imx \
-    v4l-utils \
     libjpeg-turbo \
     hostapd \
     vsftpd \
@@ -43,6 +43,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     iptables \
     i2c-tools \
     mtd-utils \
-	wifi-bt-conf \
 "
-IMAGE_INSTALL:append = "libgpiod"
+IMAGE_INSTALL:append = " libgpiod"
+IMAGE_INSTALL:append = " safetyrails"
+IMAGE_INSTALL:append = " kernel-module-eg91-ctrl"
+IMAGE_INSTALL:append = " networkmanager"
+IMAGE_INSTALL:append = " modemmanager"
