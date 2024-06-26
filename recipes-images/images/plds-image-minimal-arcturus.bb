@@ -10,10 +10,6 @@ LICENSE = "MIT"
 
 inherit core-image
 
-### WARNING: This image is NOT suitable for production use and is intended
-###          to provide a way for users to reproduce the image used during
-###          the validation process of i.MX BSP releases.
-
 ## Select Image Features
 IMAGE_FEATURES += " \
     debug-tweaks \
