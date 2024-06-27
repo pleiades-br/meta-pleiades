@@ -11,7 +11,7 @@ do_unpack:append:plds-myd-y6ull-arcturus() {
 }
 
 copy_arcturus_files() {
-    cp -f myb-imx6ull-14x14-base-arcturus.dts myd-y6ull-emmc-arcturus.dts myd-y6ull-gpmi-weim-arcturus.dts ${S}/arch/arm/boot/dts
+    cp -f dts/myb-imx6ull-14x14-base-arcturus.dts dts/myd-y6ull-emmc-arcturus.dts dts/myd-y6ull-gpmi-weim-arcturus.dts ${S}/arch/arm/boot/dts
     #cp -f myd_y6ulx_defconfig ${S}/arch/arm/configs/
 }
 
