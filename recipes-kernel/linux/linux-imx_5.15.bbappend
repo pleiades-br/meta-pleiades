@@ -1,15 +1,12 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-unset SRC_URI
-unset IMX_KERNEL_CONFIG_AARCH32
-
 SRC_URI:append:plds-myd-y6ull-arcturus = " \
-    file://myb-imx6ull-14x14-base-arcturus.dts \
-    file://myd-y6ull-emmc-arcturus.dts \
-    file://myd-y6ull-gpmi-weim-arcturus.dts"
+    file://dts/myb-imx6ull-14x14-base-arcturus.dts \
+    file://dts/myd-y6ull-emmc-arcturus.dts \
+    file://dts/myd-y6ull-gpmi-weim-arcturus.dts"
 
 
-do_unpack:append() {
+do_unpack:append:plds-myd-y6ull-arcturus() {
     bb.build.exec_func('copy_arcturus_files', d)
 }
 
