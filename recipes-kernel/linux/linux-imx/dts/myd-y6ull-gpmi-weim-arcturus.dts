@@ -35,15 +35,16 @@
                 };
 
         };
+    /delete-node/ sound;
 };
 
 /delete-node/ &backlight_display;
-/delete-node/ &sound;
+/delete-node/ &lcdif;
 
 &i2c2 {
-    /delete-node/ &codec;
-    /delete-node/ &ov2659;
-    /delete-node/ &ft5x06;
+    /delete-node/ codec;
+    /delete-node/ ov2659;
+    /delete-node/ ft5x06;
 }
 
 
