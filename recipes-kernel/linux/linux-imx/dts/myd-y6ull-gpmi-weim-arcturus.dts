@@ -8,6 +8,65 @@
 
 #include "myb-imx6ull-14x14-base.dts"
 
+/ {
+ 	sound_card: sound-card {
+                compatible = "simple-audio-card";
+                simple-audio-card,format = "i2s";
+                simple-audio-card,frame-master = <&dailink_master>;
+                simple-audio-card,bitclock-master = <&dailink_master>;
+                simple-audio-card,name = "max9867";
+                status = "okay";
+                simple-audio-card,routing =
+                    "Left Line", "LOUT",
+                    "Right Line", "ROUT";
+                simple-audio-card,widgets =
+                    "Headphones", "Headphones",
+                    "Line", "Left Line",
+                    "Line", "Right Line",
+                    "Speaker", "Speaker";
+                
+                dailink_master: simple-audio-card,cpu {
+                        sound-dai = <&sai2>;
+                        clocks = <&clks IMX6UL_CLK_SAI2>;
+                };
+
+                simple-audio-card,codec{
+                        sound-dai = <&max9867>;
+                };
+
+        };
+};
+
+/delete-node/ &backlight_display;
+/delete-node/ &sound;
+
+&i2c2 {
+    /delete-node/ &codec;
+    /delete-node/ &ov2659;
+    /delete-node/ &ft5x06;
+}
+
+
+
+&i2c4 {
+	status = "okay";
+	max9867: max9867@18 {
+		compatible = "maxim,max9867";
+        clocks = <&clks IMX6UL_CLK_SAI2>;
+		#sound-dai-cells = <0>;
+		reg = <0x18>;
+	};
+
+    /* Temperature, humidty sensor */
+	shtc3: shtc3@70 {
+		compatible = "sensirion,shtc3";
+		reg = <0x70>;
+		sensirion,blocking-io;
+	};
+};
+
+
+
 &gpmi {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_gpmi_nand_1>;
