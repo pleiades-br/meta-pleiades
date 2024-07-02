@@ -16,9 +16,14 @@
 #define IMX_GPIO_NR(port, index)		((((port)-1)*32)+((index)&31))
 
 /* GPIOs related to EG91 LTE connected in verdin*/
-#define EG91_VBAT   IMX_GPIO_NR(1,0) //SODIMM 206
+/*#define EG91_VBAT   IMX_GPIO_NR(1,0) //SODIMM 206
 #define EG91_PWR    IMX_GPIO_NR(1,5) //SODIMM 210
-#define EG91_RST    IMX_GPIO_NR(1,1) //SODIMM 208
+#define EG91_RST    IMX_GPIO_NR(1,1) //SODIMM 208*/
+
+/* GPIOs related to EG91 LTE connected in Arcturus*/
+#define EG91_VBAT   IMX_GPIO_NR(3,22) //PIN 107
+#define EG91_PWR    IMX_GPIO_NR(3,23) //PIN 108
+#define EG91_RST    IMX_GPIO_NR(3,24) //PIN 109
 
 #define DEVICE_NAME "eg91-control"
 
