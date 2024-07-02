@@ -35,21 +35,32 @@
                 };
 
         };
+    /delete-node/ sound;
 };
 
 /delete-node/ &backlight_display;
-/delete-node/ &sound;
+/delete-node/ &lcdif;
+
+&i2c1 {
+    status = "okay";
+};
 
 &i2c2 {
-    /delete-node/ &codec;
-    /delete-node/ &ov2659;
-    /delete-node/ &ft5x06;
-}
+    /delete-node/ codec;
+    /delete-node/ ft5x06;
+    /delete-node/ ov2659;
+};
 
-
+&i2c3 {
+    status = "okay";
+};
 
 &i2c4 {
+	clock-frequency = <100000>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c4>;
 	status = "okay";
+
 	max9867: max9867@18 {
 		compatible = "maxim,max9867";
         clocks = <&clks IMX6UL_CLK_SAI2>;
@@ -94,6 +105,14 @@
 				MX6UL_PAD_NAND_DATA07__RAWNAND_DATA07   0xb0b1
 			>;
 		};
+    imx6ul-evk {
+        pinctrl_i2c4: i2c4grp {
+		    fsl,pins = <
+			    MX6UL_PAD_UART2_RX_DATA__I2C4_SDA 0x4001b8b0
+			    MX6UL_PAD_UART2_TX_DATA__I2C4_SCL 0x4001b8b0
+		    >;
+	    };
+    };
 };
 
 &usdhc1 {
