@@ -41,6 +41,14 @@
 /delete-node/ &backlight_display;
 /delete-node/ &lcdif;
 
+&can1 {
+    status = "disabled";
+}
+
+&can2 {
+    status = "disabled";
+}
+
 &i2c1 {
     status = "okay";
 };
@@ -76,13 +84,26 @@
 	};
 };
 
-
+&uart3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart3>;
+	uart-has-rtscts;
+	status = "okay";
+};
 
 &gpmi {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_gpmi_nand_1>;
-	status = "okay";
 	nand-on-flash-bbt;
+    status = "okay";
+};
+
+&ecspi2 {
+    pinctrl-names = "default";
+    pinctrl-0 = <&pinctrl_wifi_spi>;
+    spi-max-frequency = <4000000>;
+    spi-slave;
+    status = "okay";
 };
 
 &iomuxc {
@@ -112,6 +133,38 @@
 			    MX6UL_PAD_UART2_TX_DATA__I2C4_SCL 0x4001b8b0
 		    >;
 	    };
+
+        pinctrl_wifi_ctrl: wifictrlgrp {
+            fsl,pins =
+                <MX6UL_PAD_CSI_DATA03__GPIO4_IO24		0x10b0>;	/* WIFI_WKUP_WLAN */
+        };
+
+        pinctrl_wifi_spi: wifispigrp {
+            fsl,pins =
+                <MX6UL_PAD_CSI_DATA01__ECSPI2_SS0		0x100b1>,	/* WIFI_SPI_CS */
+                <MX6UL_PAD_CSI_DATA00__ECSPI2_SCLK		0x100b1>,	/* WIFI_SPI_CLK */
+                <MX6UL_PAD_CSI_DATA03__ECSPI2_MISO		0x100b1>,	/* WIFI_SPI_MISO */
+                <MX6UL_PAD_CSI_DATA02__ECSPI2_MOSI		0x100b1>;	/* WIFI_SPI_MOSI */
+        };
+
+        pinctrl_wifi_spi_int: wifispiintgrp {
+            fsl,pins =
+                <MX6UL_PAD_CSI_DATA07__GPIO4_IO28		0x10b0>,	/* WIFI_SPI_INTERRUPT_PIN */
+        };
+
+        pinctrl_wifi_reset_en: wifiresetengrp {
+            fsl,pins =
+                <MX6UL_PAD_CSI_VSYNC__GPIO4_IO19		0x10b0>;	/* WIFI_RESET */
+        };
+
+	    pinctrl_uart3: uart3grp {
+		    fsl,pins = <
+			    MX6UL_PAD_UART3_TX_DATA__GPIO1_IO24	0x3b0b1
+			    MX6UL_PAD_UART3_RX_DATA__GPIO1_IO25	0x1b0b1
+			    MX6UL_PAD_UART3_RTS_B__GPIO1_IO27	0x1b0b1
+			    MX6UL_PAD_UART3_CTS_B__GPIO1_IO26	0x1b0b1
+		    >;
+	    };
     };
 };
 
@@ -131,7 +184,7 @@
     pm-ignore-notify;
     cap-power-off-card;
 //    /delete-property/ wakeup-source;
-    status = "okay";
+    status = "disabled";
 
     brcmf: bcrmf@1 {
         reg = <1>;
