@@ -28,7 +28,6 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     python3 \
     myir-regulatory \
     bridge-utils \
-    firmware-imx \
     libjpeg-turbo \
     hostapd \
     vsftpd \
