@@ -21,9 +21,9 @@
 #define EG91_RST    IMX_GPIO_NR(1,1) //SODIMM 208*/
 
 /* GPIOs related to EG91 LTE connected in Arcturus*/
-#define EG91_VBAT   IMX_GPIO_NR(3,23) //PIN 107
-#define EG91_PWR    IMX_GPIO_NR(3,24) //PIN 108
-#define EG91_RST    IMX_GPIO_NR(3,25) //PIN 109
+#define EG91_VBAT   IMX_GPIO_NR(4,13) //PIN 107
+#define EG91_PWR    IMX_GPIO_NR(4,14) //PIN 108
+#define EG91_RST    IMX_GPIO_NR(4,55) //PIN 109
 
 #define DEVICE_NAME "eg91-control"
 
