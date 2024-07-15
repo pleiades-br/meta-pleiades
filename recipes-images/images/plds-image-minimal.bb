@@ -40,7 +40,6 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     mtd-utils \
 "
 IMAGE_INSTALL:append = " libgpiod"
-IMAGE_INSTALL:append = " safetyrails"
 IMAGE_INSTALL:append = " kernel-module-eg91-ctrl"
 IMAGE_INSTALL:append = " networkmanager"
 IMAGE_INSTALL:append = " modemmanager"
