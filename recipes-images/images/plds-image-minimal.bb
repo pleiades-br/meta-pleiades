@@ -43,3 +43,5 @@ IMAGE_INSTALL:append = " libgpiod"
 IMAGE_INSTALL:append = " kernel-module-eg91-ctrl"
 IMAGE_INSTALL:append = " networkmanager"
 IMAGE_INSTALL:append = " modemmanager"
+IMAGE_INSTALL:append = " ppp"
+
