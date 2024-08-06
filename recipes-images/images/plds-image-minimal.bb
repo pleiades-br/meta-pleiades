@@ -38,7 +38,6 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     iptables \
     i2c-tools \
     mtd-utils \
-    syslog-conf \
 "
 IMAGE_INSTALL:append = " libgpiod"
 IMAGE_INSTALL:append = " kernel-module-eg91-ctrl"
