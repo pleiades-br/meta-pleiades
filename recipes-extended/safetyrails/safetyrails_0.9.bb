@@ -3,7 +3,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4a4dcba7e9f35ff16fd3c325ea239fd6"
 
 SRC_URI = "git://github.com/pleiades-br/arcturus-safetyRails.git;protocol=https;branch=main"
-SRCREV = "81a154e87d3cfdc134c00f9e8ab88f9b5fad9abe"
+SRCREV = "65e66742a9f6de4d5a77e5ce0328a13362335002"
 
 S = "${WORKDIR}/git"
 
