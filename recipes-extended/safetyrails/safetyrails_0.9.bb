@@ -5,12 +5,12 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI = " \
     git://github.com/pleiades-br/arcturus-safetyRails.git;protocol=https;branch=main \
-    file://sftrail.conf \
+    file://sftrails.conf \
     file://pre_dtmf.wav \
     file://pos_dtmf.wav \
     file://text_output.wav \
     "
-SRCREV = "adc0238d3cedd54ac0622d802fc3fc2959ed020b"
+SRCREV = "9a4e70c3a9748345ee218c867dd4fed2b438d59c"
 
 S = "${WORKDIR}/git"
 
