@@ -10,7 +10,7 @@ SRC_URI = " \
     file://pos_dtmf.wav \
     file://text_output.wav \
     "
-SRCREV = "9a4e70c3a9748345ee218c867dd4fed2b438d59c"
+SRCREV = "3262b0e03f5ca6ede295d52765064c66d9ae8551"
 
 S = "${WORKDIR}/git"
 
