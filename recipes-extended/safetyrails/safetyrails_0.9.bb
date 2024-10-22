@@ -18,10 +18,10 @@ inherit setuptools3
 
 do_install:append () {
     install -d ${D}${bindir}
-    install -m 0755 sftrails.py ${D}${bindir}
+    install -m 0755 sftrails ${D}${bindir}
 
     install -d ${D}${sysconfdir}/sftrails/
-    install -m 0644 sftrailsconf ${D}${sysconfdir}/sftrails/
+    install -m 0644 sftrails.conf ${D}${sysconfdir}/sftrails/
     
     install -d ${D}/media/
     install -m 0666 pre_dtmf.wav ${D}/media/
