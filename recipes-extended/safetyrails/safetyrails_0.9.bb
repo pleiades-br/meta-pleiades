@@ -21,13 +21,13 @@ do_install:append () {
     install -m 0755 sftrails ${D}${bindir}
 
     install -d ${D}${sysconfdir}/sftrails/
-    install -m 0644 sftrails.conf ${D}${sysconfdir}/sftrails/
+    install -m 0644 ${WORKDIR}/sftrails.conf ${D}${sysconfdir}/sftrails/
     
     install -d ${D}/media/
-    install -m 0666 pre_dtmf.wav ${D}/media/
-    install -m 0666 pos_dtmf.wav ${D}/media/
-    install -m 0666 text_output.wav ${D}/media/
+    install -m 0666 ${WORKDIR}/pre_dtmf.wav ${D}/media/
+    install -m 0666 ${WORKDIR}/pos_dtmf.wav ${D}/media/
+    install -m 0666 ${WORKDIR}/text_output.wav ${D}/media/
 }
 
 RDEPENDS:${PN} += " python3-numpy python3-gpiod python3-pyaudio espeak"
-
+FILES:${PN} += "/media/*"
