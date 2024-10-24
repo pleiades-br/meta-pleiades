@@ -10,7 +10,7 @@ SRC_URI = " \
     file://pos_dtmf.wav \
     file://text_output.wav \
     "
-SRCREV = "64cc18330353a5154776f0cd28ad4ed7cc609872"
+SRCREV = "bd85bc3096bdf48de01ad07afe7647aa01d9f971"
 
 S = "${WORKDIR}/git"
 
@@ -29,5 +29,5 @@ do_install:append () {
     install -m 0666 ${WORKDIR}/text_output.wav ${D}/opt/sftrails/
 }
 
-RDEPENDS:${PN} += " python3-numpy python3-gpiod python3-pyaudio espeak"
+RDEPENDS:${PN} += " python3-numpy python3-gpiod python3-paho-mqtt espeak"
 FILES:${PN} += "/opt/sftrails/*"
